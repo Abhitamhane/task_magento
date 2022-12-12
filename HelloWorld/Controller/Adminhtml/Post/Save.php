@@ -21,37 +21,35 @@ class Save extends Action
 
     public function execute()
     {
+        // $id = (int)$this->getRequest()->getParam('id_column');  
         $data= $this->getRequest()->getPost();
-        // $id = (int)$this->getRequest()->getParam('entity_id');
+        $id = $data['general']['id_column'];
+       
+        // echo "<pre>";
+        // print_r($id);exit;
         try {
-            $model = $this->_viewCollectionFactory->create();
-            $model->addData([
-                "empNo" => $data['emp_no'],
-                "empName" => $data['emp_name'],
-                "contactNo" => $data['contact_no'],
-                "dob" => $data['dob'],
-            ]);
-            $saveData = $model->save();
+            $model = $this->_viewCollectionFactory->create()->load($id);
+            $addData = array(
+                "emp_no" => $data['general']['emp_no'],
+                "emp_name" => $data['general']['emp_name'],
+                "contact_no" => $data['general']['contact_no'],
+                "dob" => $data['general']['dob'],
+            );
+            //   print_r($data['general']['id_column']);exit;
 
-            if($saveData){
- 
-                $this->messageManager->addSuccess( __('Insert data Successfully !') );
-             
-            }
-                    }catch (\Exception $e) {
-
-                        $this->messageManager->addError(__($e->getMessage()));
-
-                    }
-             
-                    $this->_redirect('*/*/index');
-             
-                }
            
-            
-    
+            // print_r($addData);exit;
+            $model->setData($addData);
+            $model->save();
 
-            // $model->setData($data)->save();
-            
-    
+            if($model)
+                {
+                $this->messageManager->addSuccess( __('Data Insert Successfully !') );
+                }
+            }catch (\Exception $e) 
+                {
+                    $this->messageManager->addError(__($e->getMessage()));
+                }
+                    $this->_redirect('*/*/index');
+    }
 }
