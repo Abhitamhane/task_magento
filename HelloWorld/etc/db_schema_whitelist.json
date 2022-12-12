@@ -1,0 +1,14 @@
+{
+    "mp_post": {
+        "column": {
+            "id_column": true,
+            "emp_no": true,
+            "emp_name": true,
+            "dob": true,
+            "contact_no": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}   
