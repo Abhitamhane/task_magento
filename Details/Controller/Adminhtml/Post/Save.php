@@ -23,12 +23,13 @@ class Save extends Action
     {
         // $id = (int)$this->getRequest()->getParam('id_column');  
         $data= $this->getRequest()->getPost();
-   
        
         // echo "<pre>";
-        // print_r($id);exit;
+        // print_r($data_id);exit;
         try {
-            $model = $this->_viewCollectionFactory->create();
+        
+                $model = $this->_viewCollectionFactory->create();
+          
             $addData = array(
                 "emp_no" => $data['general']['emp_no'],
                 "emp_name" => $data['general']['emp_name'],

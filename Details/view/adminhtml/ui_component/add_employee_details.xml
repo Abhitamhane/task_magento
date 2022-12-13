@@ -4,8 +4,8 @@
     <argument name="data" xsi:type="array">
 
         <item name="js_config" xsi:type="array">
-            <item name="provider" xsi:type="string">employee_details.edit_form_data_source</item>
-            <item name="deps" xsi:type="string">employee_details.edit_form_data_source</item>
+            <item name="provider" xsi:type="string">add_employee_details.edit_form_data_source</item>
+            <item name="deps" xsi:type="string">add_employee_details.edit_form_data_source</item>
         </item>
 
         <item name="label" xsi:type="string" translate="true">Sample Form</item>

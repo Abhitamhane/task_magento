@@ -15,7 +15,7 @@
                 <item name="class" xsi:type="string">primary</item>
                 <!-- <item name="url" xsi:type="string">*/*/edit</item>  -->
                 <!-- <item name="url" xsi:type="string">*/*/createn</item> -->
-                <item name="url" xsi:type="string">*/*/edit</item>
+                <item name="url" xsi:type="string">*/*/insert</item>
             </item>
         </item>
 
