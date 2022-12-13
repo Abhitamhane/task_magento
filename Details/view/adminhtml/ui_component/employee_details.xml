@@ -34,7 +34,7 @@
          <argument name="requestFieldName" xsi:type="string">id_column</argument>
          <argument name="data" xsi:type="array">
             <item name="config" xsi:type="array">
-               <item name="submit_url" xsi:type="url" path="*/*/save" />
+               <item name="submit_url" xsi:type="url" path="*/*/update" />
             </item>
          </argument>
       </argument>
