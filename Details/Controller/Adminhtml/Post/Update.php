@@ -23,25 +23,19 @@ class Update extends Action
     {
         $id = (int)$this->getRequest()->getParam("id_column");  
         $data= $this->getRequest()->getPost();
-       
-        // echo "<pre>";
-         print_r($id);exit;
+        
         try {
         
                 $model = $this->_viewCollectionFactory->create();
-                $model->load($id)->setData($data)->save();
-
-        
-            //   print_r($data['general']['id_column']);exit;
-
-           
-            // print_r($addData);exit;
-            // $model->setData($data);
-            // $model->save();
-
+                $model->load($data['general']['id_column']);
+                $model->setEmpNo($data['general']['emp_no']);
+                $model->setEmpName($data['general']['emp_name']);
+                $model->setContactNo($data['general']['contact_no']);
+                $model->setDob($data['general']['dob']);
+                $model->save();
             if($model)
                 {
-                $this->messageManager->addSuccess( __('Data Insert Successfully !') );
+                $this->messageManager->addSuccess( __('Data Update Successfully !') );
                 }
             }catch (\Exception $e) 
                 {
