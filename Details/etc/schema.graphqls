@@ -13,7 +13,7 @@ type EmployeeDetails {
     emp_no: Int
     emp_name: String
     contact_no: String
-    dob: Int
+    dob: String
 }
 
 type EmployeeById {
@@ -21,7 +21,7 @@ type EmployeeById {
     emp_no: Int
     emp_name: String
     contact_no: String
-    dob: Int
+    dob: String
 }
 
 type Mutation {
@@ -33,7 +33,7 @@ input EmployeeInput  @doc(description:"Add Employee Input") {
     empNo: Int @doc(description: "The unique ID of a `Emp Id`.")
     empName: String @doc(description: "Enter `Emp`")
     contactNo: Int @doc(description: "Enter `contact_no`")
-    dob: Int @doc(description: "Enter `DOB`")
+    dob: String @doc(description: "Enter `DOB`")
 }
 
 type EmployeeOutput  @doc(description: "Employee Output."){
@@ -41,7 +41,7 @@ type EmployeeOutput  @doc(description: "Employee Output."){
     empNo: Int @doc(description: "Output `Emp Id`.")
     empName: String @doc(description: "`Emp Name` Output")
     contactNo: Int @doc(description: "`contact_no` Output")
-    dob: Int @doc(description: "`DOB` Output")
+    dob: String @doc(description: "`DOB` Output")
 }
 
 
