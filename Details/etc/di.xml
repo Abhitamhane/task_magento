@@ -3,12 +3,9 @@
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="employee_details_list_data_source" xsi:type="string">Employee\Details\Model\ResourceModel\Post\Collection</item>
-                
                 <item name="employee_details_post_edit_form_data_source" xsi:type="string">Employee\Details\Model\ResourceModel\Post\Collection</item>
-
                 <item name="employee_details_post_new_data_source" xsi:type="string">Employee\Details\Model\ResourceModel\Post\Collection</item>
                 <item name="edit_form_data_source" xsi:type="string">Employee\Details\Model\ResourceModel\Post\Collection</item>
-
                 <item name="new_employee_data_source" xsi:type="string">Employee\Details\Model\ResourceModel\Post\Collection</item>
             </argument>
         </arguments>
@@ -20,4 +17,14 @@
             <argument name="resourceModel" xsi:type="string">Employee\Details\Model\ResourceModel\Post</argument>
         </arguments>
     </virtualType>
+
+    <virtualType name="Magento\Sales\Model\ResourceModel\Order\Grid" type="Magento\Sales\Model\ResourceModel\Grid">
+        <arguments>
+            <argument name="columns" xsi:type="array">
+                <item name="agent_id" xsi:type="string">sales_order.agent_id</item>
+                <item name="agent_commission" xsi:type="string">sales_order.agent_commission</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    
 </config>

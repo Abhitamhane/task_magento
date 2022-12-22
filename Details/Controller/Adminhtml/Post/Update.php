@@ -33,6 +33,7 @@ class Update extends Action
                 $model->setEmpName($data['general']['emp_name']);
                 $model->setContactNo($data['general']['contact_no']);
                 $model->setDob($data['general']['dob']);
+                $model->setPercentage($data['general']['percentage']);
                 $model->save();
             if($model)
                 {

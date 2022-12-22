@@ -43,7 +43,7 @@ class EmployeeDetails extends Template
          //get values of current page
          $page=($this->getRequest()->getParam('p'))? $this->getRequest()->getParam('p') : 1;
          //get values of current limit
-         $pageSize=($this->getRequest()->getParam('limit'))? $this->getRequest()->getParam('limit') : 1;
+         $pageSize=($this->getRequest()->getParam('limit'))? $this->getRequest()->getParam('limit') : 5;
         $empCollection = $this->_viewCollectionFactory->create();
 
         $empCollection->setPageSize($pageSize); 

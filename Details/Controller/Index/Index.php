@@ -1,8 +1,6 @@
 <?php
 namespace Employee\Details\Controller\Index;
 
-
-
 class Index extends \Magento\Framework\App\Action\Action
 {
 
@@ -18,7 +16,6 @@ class Index extends \Magento\Framework\App\Action\Action
 		$this->_postFactory = $postFactory;
 		return parent::__construct($context);
 	}
-
 	public function execute()
 	{
 		$post = $this->_postFactory->create();
@@ -26,7 +23,6 @@ class Index extends \Magento\Framework\App\Action\Action
 		foreach($collection as $item){
 			echo "<pre><h3>";
 			print_r($item->getData());
-			
 			echo "</h3></pre>";
 		}
 		exit();

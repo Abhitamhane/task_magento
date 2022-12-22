@@ -19,6 +19,7 @@ tr:nth-child(even) { background-color: #dddddd; }
       <th class="width">Employee Name</th>
       <th class="width">Contact Number</th>
       <th class="width">DOB</th>
+      <th class="width">Commission</th>
 
     </tr>
       <?php foreach ($employees as $employee): ?>
@@ -28,7 +29,7 @@ tr:nth-child(even) { background-color: #dddddd; }
               <td class="width"><?= $employee->getData('emp_name');?></td>
               <td class="width"><?= $employee->getContactNo();?></td>
               <td class="width"><?= $employee->getDob();?></td>
-              
+              <td class="width"><?= $employee->getPercentage();?></td>
           </tr>
       <?php endforeach;?>
   </table>

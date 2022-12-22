@@ -5,7 +5,8 @@
             "emp_no": true,
             "emp_name": true,
             "dob": true,
-            "contact_no": true
+            "contact_no": true,
+            "percenntage" : true
         },
         "constraint": {
             "PRIMARY": true

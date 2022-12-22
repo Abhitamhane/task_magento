@@ -22,6 +22,7 @@
             <item name="back" xsi:type="string">Employee\Details\Block\Adminhtml\Post\BackButton</item>
             <item name="save" xsi:type="string">Employee\Details\Block\Adminhtml\Post\SaveButton</item>
             <item name="reset" xsi:type="string">Employee\Details\Block\Adminhtml\Post\ResetButton</item>
+            <item name="delete" xsi:type="string">Employee\Details\Block\Adminhtml\Post\DeleteButton</item>
         </item>
 
     </argument>
@@ -96,12 +97,26 @@
                 <item name="config" xsi:type="array">
                 <item name="dataType" xsi:type="string">string</item>
                 <item name="label" xsi:type="string" translate="true">Date Of Birth</item>
+                <item name="dateFormat" xsi:type="string">dd-MM-YYYY</item>
                 <item name="formElement" xsi:type="string">date</item>
                 <item name="source" xsi:type="string">employee</item>
                 <item name="dataScope" xsi:type="string">dob</item>
                 </item>
             </argument>
         </field>
+
+          <field name="percentage">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">string</item>
+                <item name="label" xsi:type="string" translate="true">Agent Percentage</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="source" xsi:type="string">employee</item>
+                <item name="dataScope" xsi:type="string">percentage</item>
+                </item>
+            </argument>
+        </field>
+
 
 
     </fieldset>

@@ -1,7 +1,5 @@
 <listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
 
-
-
     <argument name="data" xsi:type="array">
         <item name="js_config" xsi:type="array">
             <item name="provider" xsi:type="string">employee_details_list.employee_details_list_data_source</item>
@@ -32,25 +30,13 @@
     </argument>
 
     <listingToolbar name="listing">
-
+        <bookmark name="bookmarks"/>
         <filters name="listing_filters" />
         <columnsControls name="columns_controls"/>
         <exportButton name="export_button"/>
-
+        <paging name="listing_paging"/>
     </listingToolbar>
 
-        <massaction name="listing_massaction" component="">
-            <action name="delete">
-                <settings>
-                    <confirm>
-                        <message translate="true">Are you sure you want to delete the selected Employee?</message>
-                        <title translate="true">Delete items</title>
-                    </confirm>
-                    <type>delete</type>
-                    <label translate="true">Delete</label>
-                </settings>
-            </action>
-        </massaction>
 
     <dataSource name="nameOfDataSource">
         <argument name="dataProvider" xsi:type="configurableObject">
@@ -109,6 +95,13 @@
             <settings>
                 <filter>Number</filter>
                 <label translate="true">Date of Birth</label>
+            </settings>
+        </column>
+
+        <column name="percentage" sortOrder="60">
+            <settings>
+                <filter>Number</filter>
+                <label translate="true">Agent %</label>
             </settings>
         </column>
 

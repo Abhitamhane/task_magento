@@ -99,10 +99,22 @@
                 <item name="formElement" xsi:type="string">date</item>
                 <item name="source" xsi:type="string">employee</item>
                 <item name="dataScope" xsi:type="string">dob</item>
+                <item name="dateFormat" xsi:type="string">dd-MM-Y</item>
                 </item>
             </argument>
         </field>
 
+        <field name="percentage">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                <item name="dataType" xsi:type="string">text</item>
+                <item name="label" xsi:type="string" translate="true">Agent Percentage</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="source" xsi:type="string">employee</item>
+                <item name="dataScope" xsi:type="string">percentage</item>
+                </item>
+            </argument>
+        </field>
 
     </fieldset>
 

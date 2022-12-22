@@ -35,6 +35,7 @@ class Save extends Action
                 "emp_name" => $data['general']['emp_name'],
                 "contact_no" => $data['general']['contact_no'],
                 "dob" => $data['general']['dob'],
+                "percentage" => $data['general']['percentage'],
             );
             //   print_r($data['general']['id_column']);exit;
 

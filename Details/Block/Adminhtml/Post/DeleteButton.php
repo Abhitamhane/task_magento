@@ -5,7 +5,7 @@ namespace Employee\Details\Block\Adminhtml\Post;
 use Magento\Backend\Block\Widget\Context;
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 
-class DeleteButton extends Generic implements ButtonProviderInterface
+class DeleteButton extends GenericButton implements ButtonProviderInterface
 {
     protected $context;
 
@@ -34,7 +34,7 @@ class DeleteButton extends Generic implements ButtonProviderInterface
 
     public function getDeleteUrl()
     {
-        $id = $this->context->getRequest()->getParam('id');
-        return $this->getUrl('*/*/delete', ['id' => $id]);
+        $id = $this->context->getRequest()->getParam('id_column');
+        return $this->getUrl('*/*/delete', ['id_column' => $id]);
     }
 }

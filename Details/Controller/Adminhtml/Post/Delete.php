@@ -28,11 +28,13 @@ class Delete extends Action
         try {
         
                 $model = $this->_viewCollectionFactory->create();
-                $model->load($data['general']['id_column']);
-                print_r('heyyyy');exit;
+                // print_r($id);exit;
+                $model->load($id);
+                $model->delete();
+               
             if($model)
                 {
-                $this->messageManager->addSuccess( __('Data Update Successfully !') );
+                $this->messageManager->addSuccess( __('Data Deleted Successfully !') );
                 }
             }catch (\Exception $e) 
                 {
