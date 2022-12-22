@@ -1,32 +1,43 @@
 <?php
 
+namespace Employee\Details\Controller\Adminhtml\Post;
 
-namespace Employee\Details\Controller\Adminhtml\post;
+use \Employee\Details\Model\PostFactory as ViewCollectionFactory;
+use Magento\Backend\App\Action;
+use Magento\Backend\App\Action\Context;
+// use Employee\Details\Helper\Data as EmployeeHelper;
 
-use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\Action\Context;
-use Employee\Details\Model\Post;
+use Magento\Framework\Controller\ResultFactory;
 
+class Delete extends Action 
 
+{
+    protected $_viewCollectionFactory;
 
-class Delete extends Action {
-     
-    public function execute() {
-        $id = $this->getRequest()->getParam('id_column');
-        /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-        $resultRedirect = $this->resultRedirectFactory->create();
-        if ($id) {
-            $title = "";
-            try {
-               $model = $this->_objectManager->create('Yournamespace\Brand\Model\Branddetails');
-               $model->load($id);
-               $model->delete();
-               $this->messageManager->addSuccess(__('The brand has been deleted.'));
-               return $resultRedirect->setPath('*/*/index');
-           } catch (\Exception $e) {
-               $this->messageManager->addError($e->getMessage());
-               return $resultRedirect->setPath('employee_details/post/edit', ['entity_id' => $id]);
-           }
-       }
-   }
+    public function __construct(ViewCollectionFactory $viewCollectionFactory, Context $context)
+    {
+        $this->_viewCollectionFactory = $viewCollectionFactory;
+        parent::__construct($context);
+    }
+
+    public function execute()
+    {
+        $id = (int)$this->getRequest()->getParam("id_column");  
+        $data= $this->getRequest()->getPost();
+        
+        try {
+        
+                $model = $this->_viewCollectionFactory->create();
+                $model->load($data['general']['id_column']);
+                print_r('heyyyy');exit;
+            if($model)
+                {
+                $this->messageManager->addSuccess( __('Data Update Successfully !') );
+                }
+            }catch (\Exception $e) 
+                {
+                    $this->messageManager->addError(__($e->getMessage()));
+                }
+                    $this->_redirect('*/*/index');
+    }
 }

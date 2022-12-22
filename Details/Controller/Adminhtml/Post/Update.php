@@ -23,6 +23,7 @@ class Update extends Action
     {
         $id = (int)$this->getRequest()->getParam("id_column");  
         $data= $this->getRequest()->getPost();
+
         
         try {
         
