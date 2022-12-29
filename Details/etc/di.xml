@@ -9,7 +9,7 @@
                 <item name="new_employee_data_source" xsi:type="string">Employee\Details\Model\ResourceModel\Post\Collection</item>
             </argument>
         </arguments>
-        
+
     </type>
     <virtualType name="Employee\Details\Model\ResourceModel\Post\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
         <arguments>
@@ -26,5 +26,5 @@
             </argument>
         </arguments>
     </virtualType>
-    
+
 </config>
