@@ -5,7 +5,7 @@ namespace Employee\Details\Model\Resolver;
 use Magento\Framework\GraphQl\Config\Element\Field;
 use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-use \Employee\Details\Model\PostFactory as EmployeeHelper;
+use \Employee\Details\Model\ResourceModel\Post\CollectionFactory as EmployeeHelper;
 
 class Employee implements ResolverInterface
 {
@@ -32,16 +32,10 @@ class Employee implements ResolverInterface
         array $args = null
     ) {
         $collect = $this->employeeHelper->create();
-        $result = [];
-        foreach ($collect as $key => $employee) {
-            $result[] = [
-                'emp_name' => $employee->getEmpName(),
-                'emp_no' => $employee->getEmpNo(),
-                'id_column' => $employee->getIdColumn(),
-                'contact_no' => $employee->getContactNo(),
-                'dob' => $employee->getDob()
-            ];
+        foreach ($collect as $key => $employee) 
+        {
+            $value [] = $employee->getData();
         }
-        return $result;
+        return $value;
     }
 }

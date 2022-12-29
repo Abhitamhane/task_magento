@@ -74,7 +74,7 @@ class Actions extends Column
                 $item[$this->getData('name')]['edit'] = [
                     'href' => $this->urlBuilder->getUrl(
                         'employee_details/post/edit',
-                        ['id_column' => $item['id_column'], 'store' => $storeId]
+                        ['id_column' => $item['id_column']]
                     ),
                     'label' => __('Edit'),
                     'hidden' => false,

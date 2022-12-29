@@ -28,7 +28,6 @@ class Delete extends Action
         try {
         
                 $model = $this->_viewCollectionFactory->create();
-                // print_r($id);exit;
                 $model->load($id);
                 $model->delete();
                
@@ -40,6 +39,6 @@ class Delete extends Action
                 {
                     $this->messageManager->addError(__($e->getMessage()));
                 }
-                    $this->_redirect('*/*/index');
+          return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/*/index');
     }
 }

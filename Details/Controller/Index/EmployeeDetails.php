@@ -15,8 +15,8 @@ class EmployeeDetails extends \Magento\Framework\App\Action\Action
 	public function execute()
 	{
 		return $this->_pageFactory->create();
-		$this->_view->loadLayout();
-     	$this->_view->renderLayout();
+		// $this->_view->loadLayout();
+     	// $this->_view->renderLayout();
 	}
 
 }

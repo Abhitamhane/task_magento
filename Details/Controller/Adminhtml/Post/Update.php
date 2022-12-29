@@ -24,16 +24,11 @@ class Update extends Action
         $id = (int)$this->getRequest()->getParam("id_column");  
         $data= $this->getRequest()->getPost();
 
-        
         try {
-        
+
                 $model = $this->_viewCollectionFactory->create();
                 $model->load($data['general']['id_column']);
-                $model->setEmpNo($data['general']['emp_no']);
-                $model->setEmpName($data['general']['emp_name']);
-                $model->setContactNo($data['general']['contact_no']);
-                $model->setDob($data['general']['dob']);
-                $model->setPercentage($data['general']['percentage']);
+                $model->setData($data['general']);
                 $model->save();
             if($model)
                 {
@@ -43,6 +38,7 @@ class Update extends Action
                 {
                     $this->messageManager->addError(__($e->getMessage()));
                 }
-                    $this->_redirect('*/*/index');
+
+            return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/*/index');
     }
 }

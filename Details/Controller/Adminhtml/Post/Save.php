@@ -21,15 +21,11 @@ class Save extends Action
 
     public function execute()
     {
-        // $id = (int)$this->getRequest()->getParam('id_column');  
         $data= $this->getRequest()->getPost();
-       
-        // echo "<pre>";
-        // print_r($data_id);exit;
         try {
         
-                $model = $this->_viewCollectionFactory->create();
-          
+            $model = $this->_viewCollectionFactory->create();
+
             $addData = array(
                 "emp_no" => $data['general']['emp_no'],
                 "emp_name" => $data['general']['emp_name'],
@@ -37,10 +33,6 @@ class Save extends Action
                 "dob" => $data['general']['dob'],
                 "percentage" => $data['general']['percentage'],
             );
-            //   print_r($data['general']['id_column']);exit;
-
-           
-            // print_r($addData);exit;
             $model->setData($addData);
             $model->save();
 

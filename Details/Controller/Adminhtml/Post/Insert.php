@@ -20,9 +20,8 @@ class Insert extends \Magento\Backend\App\Action
 
 	public function execute()
 	{ 
-        $this->_view->getPage()->getConfig()->getTitle()->prepend( __('Add New Employee Details'));
-        $resultPage = $this->resultPageFactory->create();
-        $this->_setActiveMenu('Employee_Details::employeedetails');
+		$resultPage = $this->resultPageFactory->create();
+		$resultPage->getConfig()->getTitle()->prepend( __('Add New Employee Details'));
         return $resultPage;
 	}
 }

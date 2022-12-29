@@ -7,7 +7,7 @@ use Magento\Framework\GraphQl\Query\ResolverInterface;
 use Magento\Framework\GraphQl\Exception\GraphQlInputException;
 use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
 use Employee\Details\Helper\Data as EmployeeHelper;
-use Magento\Review\Model\ResourceModel\Review\CollectionFactory as ReviewCollectionFactory;
+
 
 class EmployeeById implements ResolverInterface
 {
@@ -39,7 +39,8 @@ class EmployeeById implements ResolverInterface
         }
         try {
             $collect = $this->employeeHelper->getEmployeeByID($args['idColumn']);
-            return $collect->getData();
+            $value = $collect->getData();
+            return $value;
         
         } catch (NoSuchEntityException $exception) {
             throw  new NoSuchEntityException(__($exception->getMessage()));

@@ -52,7 +52,7 @@ class Data extends AbstractHelper
     public function getEmployeeByID($idColumn)
     {
         $post = $this->employeeTable->create()->load($idColumn);
-        return $post;
+        return $post;       
     }
 
     public function addEmployee($empNo, $empName, $contactNo, $dob)
@@ -73,5 +73,10 @@ class Data extends AbstractHelper
     public function getData()
     {
      return [];
+    }
+
+    public function unitTest()
+    {
+        return __("This is Test");
     }
 }

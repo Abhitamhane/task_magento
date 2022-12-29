@@ -34,7 +34,11 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         //{
             //$this->_loadedData['employee'][$employee->getData('id_column')] = $employee->getData();
         //}
+        
         $this->_loadedData[$items->getId()]['general'] = $items->getData();
+        // print_r($items->getData());exit;
+
+        
         //echo "<pre>";
         //print_r($this->_loadedData);exit;
         // echo "hyyyyy";exit;

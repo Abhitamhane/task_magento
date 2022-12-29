@@ -49,7 +49,7 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/provider</item>
                     <item name="update_url" xsi:type="url" path="mui/index/render"/>
                     <item name="storageConfig" xsi:type="array">
-                        <item name="indexField" xsi:type="string">id_column</item>
+                        <item name="indexField" xsi:type="string">emp_no</item>
                     </item>
                 </item>
             </argument>
@@ -114,7 +114,7 @@
         <actionsColumn name="actions" class="Employee\Details\Ui\Component\Listing\Column\Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
-                    <item name="indexField" xsi:type="string">id_column</item>
+                    <item name="indexField" xsi:type="string">emp_no</item>
                     <item name="sortOrder" xsi:type="number">200</item>
                 </item>
             </argument>

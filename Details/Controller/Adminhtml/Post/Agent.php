@@ -4,7 +4,7 @@ namespace Employee\Details\Controller\Adminhtml\Post;
 
 use Magento\Framework\Controller\ResultFactory;
 
-class Edit extends \Magento\Backend\App\Action
+class Agent extends \Magento\Backend\App\Action
 {
 	protected $resultPageFactory = false;
 
@@ -13,16 +13,16 @@ class Edit extends \Magento\Backend\App\Action
 		\Magento\Framework\View\Result\PageFactory $resultPageFactory
 	)
 	{
-		
+		parent::__construct($context);
 		$this->resultPageFactory = $resultPageFactory;
-     parent::__construct($context);
 	}
 
 	public function execute()
-	{ 
-		$resultPage = $this->resultPageFactory->create();	
-        $resultPage->getConfig()->getTitle()->prepend( __('Edit Employee Details'));
-        // $this->_setActiveMenu('Employee_Details::employeedetails');
-        return $resultPage;
+	{
+		$resultPage = $this->resultPageFactory->create();
+		$resultPage->getConfig()->getTitle()->prepend((__('Agent Commission')));
+		return $resultPage;
 	}
+
+
 }
