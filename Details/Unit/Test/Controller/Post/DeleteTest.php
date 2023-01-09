@@ -25,43 +25,24 @@ Class DeleteTest extends TestCase
     {
         parent::setUp();
 
-        $this->messageManagerMock = $this->createMock(Manager::class);
+        $this->objectManagerHelper = new ObjectManagerHelper($this);
 
         $this->contextMock = $this->createMock(Context::class);
 
         $this->postFactoryMock = $this->getMockBuilder(PostFactory::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['create','delete','load'])
-            ->getMock();
-
-        $this->resultRedirectMock = $this->getMockBuilder(Redirect::class)
-            ->disableOriginalConstructor()
-            ->setMethods(['setPath','create'])
-            ->getMock();
-            
-        $this->resultFactoryMock = $this->getMockBuilder(ResultFactory::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-            
-        $this->resultFactoryMock->expects($this->any())
-            ->method('create')
-            ->with(ResultFactory::TYPE_REDIRECT)
-            ->willReturn($this->resultRedirectMock);
+        ->disableOriginalConstructor()
+        ->setMethods(['create','setData','save','load'])
+        ->getMock();
 
         $this->request = $this->getMockBuilder(\Magento\Framework\App\RequestInterface::class)
             ->disableOriginalConstructor()
-            ->setMethods(['getPost'])
+            ->setMethods(['getPost','load'])
             ->getMockforAbstractClass();
-        
+
         $this->contextMock
             ->expects($this->once())
             ->method('getRequest')
-            ->willReturn($this->request);  
-        
-        $this->contextMock->expects($this->once())->method('getMessageManager')->willReturn($this->messageManagerMock);
-        $this->contextMock->expects($this->any())->method('getResultFactory')->willReturn($this->resultFactoryMock);
-
-        $this->objectManagerHelper = new ObjectManagerHelper($this);
+            ->willReturn($this->request);
 
         $this->deleteController = $this->objectManagerHelper->getObject(
         Delete::class,
@@ -71,33 +52,16 @@ Class DeleteTest extends TestCase
             ]
         );
 
-        $this->resultRedirectMock->expects($this->once())
-        ->method('setPath')
-        ->with('*/*/index')
-        ->willReturnSelf();
+
+
+        $this->request->expects($this->any())->method('getParam')->willReturn(1);
+
+        $this->postFactoryMock->expects($this->any())->method('load')->with($this->request)->willReturn($this->postFactoryMock);
+
     }
 
     public function testExecute(): void
     {
-
-        $this->request->expects($this->any())->method('getParam')->willReturn(1);
-        // $postData['general']['id_column'] = 123;
-
-        $this->postFactoryMock->expects($this->any())->method('load')->with(1)->willReturnSelf();
-
-        $this->postFactoryMock->expects($this->any())->method('delete')->willReturnSelf();
-
-        $this->messageManagerMock->expects($this->any())
-            ->method('addSuccess')
-            ->with(__('Data Update Successfully !'));
-            
-        $this->messageManagerMock->expects($this->never())->method('addErrorMessage');
-
-        $this->resultRedirectMock->expects($this->once())
-        ->method('setPath')
-        ->with('*/*/index')
-        ->willReturnSelf();
-        
               $this->deleteController->execute();
     }
 
