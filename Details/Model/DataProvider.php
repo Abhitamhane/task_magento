@@ -3,6 +3,7 @@
 namespace Employee\Details\Model;
 
 use Employee\Details\Model\ResourceModel\Post\CollectionFactory as CollectionFactory;
+
 class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
 {
     protected $_loadedData;
@@ -11,37 +12,19 @@ class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
         $name,
         $primaryFieldName,
         $requestFieldName,
-        CollectionFactory $employeeCollectionFactory,
+        CollectionFactory $collection,
         array $meta = [],
         array $data = []
     ) {
-        $this->collection = $employeeCollectionFactory->create();
+        $this->collection = $collection->create();
         parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
     }
 
-    public function getData()
+    public function getDetails()
     {
-        $data = parent::getData();
-        //  print_r($data);exit;
-        if (isset($this->_loadedData)) {
-            return $this->_loadedData;
-        }
-        
         $items = $this->collection->getFirstItem();
-        $this->_loadedData = array();
-        //print_r($items->getData());exit;
-        //foreach ($items as $employee)
-        //{
-            //$this->_loadedData['employee'][$employee->getData('id_column')] = $employee->getData();
-        //}
-        
-        $this->_loadedData[$items->getId()]['general'] = $items->getData();
-        // print_r($items->getData());exit;
-
-        
-        //echo "<pre>";
-        //print_r($this->_loadedData);exit;
-        // echo "hyyyyy";exit;
+        // $this->_loadedData = array();
+        $this->_loadedData= $items->getId();
         return $this->_loadedData;
     }
 }

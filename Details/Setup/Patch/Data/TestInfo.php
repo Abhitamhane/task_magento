@@ -46,7 +46,6 @@ class TestInfo implements DataPatchInterface
         $this->moduleDataSetup->endSetup();
     }
 
-    
     public function getAliases()
     {
         return [];

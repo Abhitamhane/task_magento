@@ -22,16 +22,16 @@ class EmployeeDetails extends Template
      */
     public function __construct(
         Context $context,
-        ViewCollectionFactory $viewCollectionFactory,
+        ViewCollectionFactory $_viewCollectionFactory,
     ) {
-        $this->_viewCollectionFactory  = $viewCollectionFactory;
+        $this->_viewCollectionFactory  = $_viewCollectionFactory;
         parent::__construct($context);
     }
 
     protected function _prepareLayout() {
         parent::_prepareLayout();
          if ($this->getEmployees()) {
-        $pager = $this->getLayout()->createBlock( 'Magento\Theme\Block\Html\Pager', 'employee.details' )->setAvailableLimit(array(5=>5,10=>10,15=>15))->setShowPerPage(true)->setCollection($this->getEmployees());
+        $pager = $this->getLayout()->createBlock('Magento\Theme\Block\Html\Pager', 'employee.details' )->setAvailableLimit(array(5=>5,10=>10,15=>15))->setShowPerPage(true)->setCollection($this->getEmployees());
         $this->setChild('pager', $pager);
         $this->getEmployees()->load();
         }
@@ -44,8 +44,8 @@ class EmployeeDetails extends Template
          $page=($this->getRequest()->getParam('p'))? $this->getRequest()->getParam('p') : 1;
          //get values of current limit
          $pageSize=($this->getRequest()->getParam('limit'))? $this->getRequest()->getParam('limit') : 5;
+         
         $empCollection = $this->_viewCollectionFactory->create();
-
         $empCollection->setPageSize($pageSize); 
         $empCollection->setCurPage($page);
         return $empCollection;

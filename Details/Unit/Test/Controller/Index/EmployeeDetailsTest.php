@@ -1,16 +1,16 @@
 <?php
 
-namespace Employee\Details\Unit\Test\Controller\Post;
-
+namespace Employee\Details\Unit\Test\Controller\Index;
 
 use PHPUnit\Framework\TestCase;
 use Magento\Framework\View\Result\PageFactory;
 use Magento\Framework\View\Result\Page;
 use Magento\Framework\View\Page\Title;
-use Employee\Details\Controller\Adminhtml\Post\Index as IndexPage;
+use Employee\Details\Controller\Index\EmployeeDetails as EmployeeDetailsPage;
 use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 
-Class IndexTest extends TestCase
+
+Class EmployeeDetailsTest extends TestCase
 {
     protected $objectManagerHelper;
 
@@ -43,10 +43,10 @@ Class IndexTest extends TestCase
             ->method('create')
             ->willReturn($this->page);
 
-
         $this->objectManagerHelper = new ObjectManagerHelper($this);
-        $this->indexPage = $this->objectManagerHelper->getObject(
-            IndexPage::class,
+        
+        $this->employeeDetailsPage = $this->objectManagerHelper->getObject(
+            EmployeeDetailsPage::class,
             [
                 'context' => $context,
                 'resultPageFactory' => $this->resultPageFactory
@@ -56,7 +56,8 @@ Class IndexTest extends TestCase
 
     public function testExecute(): void
     {
-        $this->assertEquals($this->page, $this->indexPage->execute());
+        $this->assertEquals($this->page, $this->employeeDetailsPage->execute());
     }
+
 
 }

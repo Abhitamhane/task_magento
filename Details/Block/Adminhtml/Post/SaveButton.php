@@ -5,7 +5,8 @@ use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
 use Magento\Ui\Component\Control\Container;
 
 
-class SaveButton extends GenericButton implements ButtonProviderInterface
+
+class SaveButton implements ButtonProviderInterface
 {
 
     public function getButtonData()

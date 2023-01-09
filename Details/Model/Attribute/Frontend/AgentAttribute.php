@@ -19,6 +19,6 @@ class AgentAttribute extends AbstractFrontend
         $value = $object->getData($this->getAttribute()->getAttributeCode());
         $collect = $this->employeeHelper->getEmployeeByID($value);
         $name = $collect->getEmpName();
-        return "Agent ID: $name";
+        return "Agent Id: $name";
     }
 }

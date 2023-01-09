@@ -18,14 +18,11 @@ class SetOrderAttribute implements \Magento\Framework\Event\ObserverInterface
         $this->_checkoutSession = $checkoutSession;
         $this->employeeHelper = $employeeHelper;
         $this->commissionTable = $commissionTable;
-        
     }
 
-    public function execute(
-        \Magento\Framework\Event\Observer $observer,
-    ) 
+    public function execute(\Magento\Framework\Event\Observer $observer) 
     {
-        $quote = $observer->getEvent()->getQuote();//$this->_checkoutSession->getQuote();
+        $quote = $observer->getEvent()->getQuote();
         $quoteItems = $quote->getAllItems(); 
         $totalCommission = 0;
 
@@ -55,7 +52,6 @@ class SetOrderAttribute implements \Magento\Framework\Event\ObserverInterface
 
             $totalCommission = $agentCommission + $totalCommission;
             $order= $observer->getData('order');
-            // $order->setAgentId("$empno"); 
             $order->setAgentCommission("$totalCommission");
             $order->save();
         }

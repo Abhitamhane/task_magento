@@ -2,7 +2,7 @@
 
 namespace Employee\Details\Controller\Adminhtml\Post;
 
-use \Employee\Details\Model\PostFactory as ViewCollectionFactory;
+use Employee\Details\Model\PostFactory as ViewCollectionFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 // use Employee\Details\Helper\Data as EmployeeHelper;

@@ -18,9 +18,4 @@ class Post extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
 		$this->_init('mp_post', 'id_column');
 	}
 	
-	public function getCollection()
-    {
-        $viewCollection = $this->_viewCollectionFactory ->create();
-        return $viewCollection->getItems();
-    }
 }

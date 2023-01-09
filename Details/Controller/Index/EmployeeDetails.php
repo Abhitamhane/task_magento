@@ -3,20 +3,21 @@ namespace Employee\Details\Controller\Index;
 
 class EmployeeDetails extends \Magento\Framework\App\Action\Action
 {
-	protected $_pageFactory;
+	protected $resultPageFactory;
+
 	public function __construct(
 		\Magento\Framework\App\Action\Context $context,
-		\Magento\Framework\View\Result\PageFactory $pageFactory)
+		\Magento\Framework\View\Result\PageFactory $resultPageFactory)
 	{
-		$this->_pageFactory = $pageFactory;
+		$this->resultPageFactory = $resultPageFactory;
 		return parent::__construct($context);
 	}
 
 	public function execute()
 	{
-		return $this->_pageFactory->create();
-		// $this->_view->loadLayout();
-     	// $this->_view->renderLayout();
+		$resultPage =  $this->resultPageFactory->create();
+		$resultPage->getConfig()->getTitle()->prepend((__('Employee Details FrontEnd')));
+		return $resultPage;
 	}
 
 }

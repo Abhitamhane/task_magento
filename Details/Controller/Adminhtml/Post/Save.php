@@ -26,7 +26,7 @@ class Save extends Action
         
             $model = $this->_viewCollectionFactory->create();
 
-            $addData = array(
+            $addData = array(   
                 "emp_no" => $data['general']['emp_no'],
                 "emp_name" => $data['general']['emp_name'],
                 "contact_no" => $data['general']['contact_no'],
@@ -44,6 +44,7 @@ class Save extends Action
                 {
                     $this->messageManager->addError(__($e->getMessage()));
                 }
-                    $this->_redirect('*/*/index');
+            return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('*/*/index');
+
     }
 }

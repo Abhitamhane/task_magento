@@ -14,8 +14,7 @@
             <item name="back" xsi:type="string">Employee\Details\Block\Adminhtml\Post\BackButton</item>
             <item name="save" xsi:type="string">Employee\Details\Block\Adminhtml\Post\SaveButton</item>
             <item name="reset" xsi:type="string">Employee\Details\Block\Adminhtml\Post\ResetButton</item>
-            <item name="delete" xsi:type="string">Employee\Details\Block\Adminhtml\Post\DeleteButton</item>
-        </item>
+              </item>
     </argument>
 
     <settings>

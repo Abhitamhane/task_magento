@@ -3,12 +3,19 @@
 namespace Employee\Details\Block\Adminhtml\Post;
 
 use Magento\Framework\View\Element\UiComponent\Control\ButtonProviderInterface;
+use Magento\Framework\UrlInterface;
+
 
 /**
  * Class BackButton
  */
-class BackButton extends GenericButton implements ButtonProviderInterface
+class BackButton implements ButtonProviderInterface
 {
+    public function __construct(
+        UrlInterface $urlBuilder
+    ) {
+        $this->urlBuilder = $urlBuilder;
+    }
     /**
      * @return array
      */
@@ -16,19 +23,10 @@ class BackButton extends GenericButton implements ButtonProviderInterface
     {
         return [
             'label' => __('Back'),
-            'on_click' => sprintf("location.href = '%s';", $this->getBackUrl()),
+            'on_click' => sprintf("location.href = '%s';", $this->urlBuilder->getUrl('*/*/')),
             'class' => 'back',
             'sort_order' => 10
         ];
     }
 
-    /**
-     * Get URL for back (reset) button
-     *
-     * @return string
-     */
-    public function getBackUrl()
-    {
-        return $this->getUrl('*/*/');
-    }
 }

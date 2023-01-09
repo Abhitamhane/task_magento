@@ -18,10 +18,10 @@ class Post extends \Magento\Framework\Model\AbstractModel implements \Magento\Fr
 		return [self::CACHE_TAG . '_' . $this->getId()];
 	}
 
-	public function getDefaultValues()
+	/*public function getDefaultValues()
 	{
 		$values = [];
 
 		return $values;
-	}
+	}*/
 }

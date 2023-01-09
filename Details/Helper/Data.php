@@ -75,8 +75,4 @@ class Data extends AbstractHelper
      return [];
     }
 
-    public function unitTest()
-    {
-        return __("This is Test");
-    }
 }

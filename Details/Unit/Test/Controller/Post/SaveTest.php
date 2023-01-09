@@ -2,18 +2,19 @@
 
 namespace Employee\Details\Unit\Test\Controller\Post;
 
+use Employee\Details\Controller\Adminhtml\Post\Save;
+
 use PHPUnit\Framework\TestCase;
 use Magento\Backend\App\Action\Context;
 use \Employee\Details\Model\PostFactory;
 use PHPUnit\Framework\MockObject\MockObject;
-use Employee\Details\Controller\Adminhtml\Post\Update;
-use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
-use Magento\Framework\Message\Manager;
 use Magento\Framework\Controller\ResultFactory;
 
+use Magento\Framework\Message\Manager;
+use Magento\Framework\TestFramework\Unit\Helper\ObjectManager as ObjectManagerHelper;
 
+class SaveTest extends TestCase
 
-Class UpdateTest extends TestCase
 {
     protected $contextMock;
     protected $objectManagerHelper;
@@ -31,7 +32,7 @@ Class UpdateTest extends TestCase
 
         $this->postFactoryMock = $this->getMockBuilder(PostFactory::class)
             ->disableOriginalConstructor()
-            ->setMethods(['create','setData','save','load'])
+            ->setMethods(['create','setData','save'])
             ->getMock();
 
         $this->resultRedirectMock = $this->getMockBuilder(Redirect::class)
@@ -64,55 +65,80 @@ Class UpdateTest extends TestCase
 
         $this->objectManagerHelper = new ObjectManagerHelper($this);
 
-        $this->updateController = $this->objectManagerHelper->getObject(
-        Update::class,
-            [
-                'context' => $this->contextMock,
-                '_viewCollectionFactory' => $this->postFactoryMock
+        $this->saveController = $this->objectManagerHelper->getObject(
+            Save::class,
+                [
+                    'context' => $this->contextMock,
+                    '_viewCollectionFactory' => $this->postFactoryMock
+                ]
+            );
+
+    }
+
+    public function testExecute(): void
+    {
+        $addData = [
+            'general'=> [
+                'emp_no' => 123,
+                'emp_name'=> 123123,
+                'contact_no'=> 9999966666,
+                'dob'=> 112343,
+                'percentage'=> 99
             ]
+        ];
+
+        $this->request->expects($this->any())->method('getPost')->willReturn($addData);
+        $this->postFactoryMock->expects($this->any())->method('create')->willThrowException(
+            new \Magento\Framework\Exception\LocalizedException(__("error"))
         );
 
         $this->resultRedirectMock->expects($this->once())
         ->method('setPath')
         ->with('*/*/index')
         ->willReturnSelf();
+
+        $this->saveController->execute();
+
     }
 
-    public function testExecute(): void
+    public function testExecuteException(): void
     {
+        $addData = [
+            'general'=> [
+                'emp_no' => 123,
+                'emp_name'=> 123123,
+                'contact_no'=> 9999966666,
+                'dob'=> 112343,
+                'percentage'=> 99
+            ]
+        ];
 
-        $this->request->expects($this->any())->method('getParam')->willReturn(1);
-        $postData['general']['id_column'] = 123;
-        $this->request->expects($this->any())->method('getPost')->willReturn($postData);
+        $this->request->expects($this->any())->method('getPost')->willReturn($addData);
 
         $this->postMock = $this->getMockBuilder(Employee\Details\Model\Post::class)
             ->disableOriginalConstructor()
-            ->setMethods(['load', 'setData', 'save'])
+            ->setMethods(['setData', 'save'])
             ->getMock();
 
         $this->postFactoryMock->expects($this->any())->method('create')->willReturn($this->postMock);
 
-        $this->postMock->expects($this->any())->method('load')->willReturnSelf();
-        
-        $this->postMock->expects($this->any())->method('setData')->willReturn($this->postMock);
+        $this->postMock->expects($this->any())->method('setData')->willReturnSelf();
 
         $this->postMock->expects($this->any())->method('save')->willReturn($this->postMock);
 
         $this->messageManagerMock->expects($this->any())
-            ->method('addSuccess')
-            ->with(__('Data Update Successfully !'));
+        ->method('addSuccess')
+        ->with(__('Data Insert Successfully !'));
 
-      
         $this->messageManagerMock->expects($this->any())->method('addError');
 
         $this->resultRedirectMock->expects($this->once())
         ->method('setPath')
         ->with('*/*/index')
         ->willReturnSelf();
-        
-        $this->updateController->execute();
 
-     
+        $this->saveController->execute();
+
     }
 
 }
